@@ -1,5 +1,7 @@
 import React from "react";
 
+import { FiLogIn } from "react-icons/fi";
+
 import {
   Container,
   ContainerCentral,
@@ -7,18 +9,29 @@ import {
   ContainerInformation,
   Title,
   Button,
+  ContainerTitle,
+  ContainerButton,
+  ContainerImage,
 } from "../components/Home/styles";
 
 const Home = () => {
   return (
     <Container>
       <ContainerCentral>
-        <Image src="/images/women.svg"></Image>
+        <ContainerImage>
+          <Image src="/images/hire.svg"></Image>
+        </ContainerImage>
 
         <ContainerInformation>
-          <Title>Gerenciamento de Funcionários</Title>
+          <ContainerTitle>
+            <Title>Gerenciamento de Funcionários</Title>
+          </ContainerTitle>
 
-          <Button>Entrar</Button>
+          <ContainerButton>
+            <Button>
+              Entrar <FiLogIn />{" "}
+            </Button>
+          </ContainerButton>
         </ContainerInformation>
       </ContainerCentral>
     </Container>
