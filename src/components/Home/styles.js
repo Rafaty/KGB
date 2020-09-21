@@ -6,14 +6,12 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   background-color: #1c9add;
-  font-family: "Roboto", sans-serif;
 `;
 
 export const ContainerCentral = styled.div`
   width: 85%;
   height: 80%;
   margin: 0 auto;
-
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -29,7 +27,7 @@ export const ContainerCentral = styled.div`
 export const ContainerImage = styled.div`
   display: flex;
   align-items: center;
-  width:70%;
+  width: 50%;
 `;
 export const Image = styled.img`
   max-width: 100%;
@@ -45,44 +43,48 @@ export const ContainerInformation = styled.div`
 `;
 
 export const ContainerTitle = styled.div`
-  padding-top: 10%;
+  padding: 10%;
   display: flex;
   align-items: center;
   text-align: center;
-  justify-content: center;
+  flex-direction:column;
   height: 50%;
   width: 100%;
 `;
 
 export const ContainerButton = styled.div`
- padding-top: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50%;
   width: 100%;
+  @media (max-width: 800px) {
+    padding: 1%;
+    height: 100%;
+  }
 `;
 
 export const Title = styled.span`
-  font-size: 3rem;
+  font-size: 3.2rem;
   color: #fdf8f8;
+`;
+export const SubTitle = styled.span`
+  margin-top:4%;
+  font-size: 1.2rem;
+  color: #CEE7F4;
 `;
 
 export const Button = styled.button`
   display: flex;
-  text-decoration: none;
   align-items: center;
   justify-content: space-around;
-  align-content: space;
-  margin-left: 10;
-  margin-right: 0;
-  width: 50%;
-  height: 25%;
-
-  cursor: pointer;
-
+  width: 40%;
+  height: 30%;
   border: 0;
   border-radius: 10px;
+  @media (max-width: 800px) {
+    padding: 3%;
+  }
   font-size: 30px;
   background-color: #27cea7;
   color: #fffcfc;

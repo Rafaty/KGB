@@ -8,6 +8,7 @@ import {
   Image,
   ContainerInformation,
   Title,
+  SubTitle,
   Button,
   ContainerTitle,
   ContainerButton,
@@ -25,6 +26,7 @@ const Home = () => {
         <ContainerInformation>
           <ContainerTitle>
             <Title>Gerenciamento de Funcionários</Title>
+           
           </ContainerTitle>
 
           <ContainerButton>
