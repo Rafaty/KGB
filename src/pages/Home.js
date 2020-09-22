@@ -1,4 +1,6 @@
 import React from "react";
+import {Link} from 'react-router-dom';
+
 
 import { FiLogIn } from "react-icons/fi";
 
@@ -30,9 +32,11 @@ const Home = () => {
           </ContainerTitle>
 
           <ContainerButton>
+            <Link to='/funcionarios'>
             <Button>
               Entrar <FiLogIn />{" "}
             </Button>
+            </Link>
           </ContainerButton>
         </ContainerInformation>
       </ContainerCentral>

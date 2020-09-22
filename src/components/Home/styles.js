@@ -53,7 +53,9 @@ export const ContainerTitle = styled.div`
 `;
 
 export const ContainerButton = styled.div`
-  display: flex;
+
+  
+  display: flex; 
   justify-content: center;
   align-items: center;
   height: 50%;
@@ -62,6 +64,7 @@ export const ContainerButton = styled.div`
     padding: 1%;
     height: 100%;
   }
+  
 `;
 
 export const Title = styled.span`
