@@ -9,8 +9,8 @@
 
 body {
   font: 400 14px Roboto, sans-serif;
- -webkit-font-smoothing: antialiased;
- background-color: #EFF0F3 !important;
+  -webkit-font-smoothing: antialiased;
+  background-color: #eff0f3 !important;
 }
 button {
   cursor: pointer;

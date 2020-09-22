@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -47,15 +47,13 @@ export const ContainerTitle = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
-  flex-direction:column;
+  flex-direction: column;
   height: 50%;
   width: 100%;
 `;
 
 export const ContainerButton = styled.div`
-
-  
-  display: flex; 
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 50%;
@@ -64,7 +62,6 @@ export const ContainerButton = styled.div`
     padding: 1%;
     height: 100%;
   }
-  
 `;
 
 export const Title = styled.span`
@@ -72,17 +69,25 @@ export const Title = styled.span`
   color: #fdf8f8;
 `;
 export const SubTitle = styled.span`
-  margin-top:4%;
+  margin-top: 4%;
   font-size: 1.2rem;
-  color: #CEE7F4;
+  color: #cee7f4;
 `;
 
-export const Button = styled.button`
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  &:focus,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 40%;
-  height: 30%;
+  height: 25%;
   border: 0;
   border-radius: 10px;
   @media (max-width: 800px) {
@@ -93,6 +98,8 @@ export const Button = styled.button`
   color: #fffcfc;
 
   &:hover {
+    text-decoration: none;
+    color: white;
     background-color: #009c73;
   }
 `;

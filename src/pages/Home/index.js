@@ -1,6 +1,4 @@
 import React from "react";
-import {Link} from 'react-router-dom';
-
 
 import { FiLogIn } from "react-icons/fi";
 
@@ -10,12 +8,11 @@ import {
   Image,
   ContainerInformation,
   Title,
-  SubTitle,
-  Button,
+  StyledLink,
   ContainerTitle,
   ContainerButton,
   ContainerImage,
-} from "../components/Home/styles";
+} from "./styles";
 
 const Home = () => {
   return (
@@ -28,15 +25,12 @@ const Home = () => {
         <ContainerInformation>
           <ContainerTitle>
             <Title>Gerenciamento de Funcionários</Title>
-           
           </ContainerTitle>
 
           <ContainerButton>
-            <Link to='/funcionarios'>
-            <Button>
-              Entrar <FiLogIn />{" "}
-            </Button>
-            </Link>
+            <StyledLink to="/funcionarios">
+              Entrar <FiLogIn />
+            </StyledLink>
           </ContainerButton>
         </ContainerInformation>
       </ContainerCentral>
