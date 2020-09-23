@@ -21,7 +21,7 @@ const Employees = () => {
 
   useEffect(() => {
     const results = employees.filter((employee) =>
-      employee.nome.toLowerCase().includes(searchTerm)
+      employee.nome.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchResults(results);
   }, [searchTerm]);
