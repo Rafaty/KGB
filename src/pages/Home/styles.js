@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
+
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   background-color: #1c9add;
+
 `;
 
 export const ContainerCentral = styled.div`
@@ -105,3 +108,7 @@ export const StyledLink = styled(Link)`
     transition: 0.4s;
   }
 `;
+
+
+
+
