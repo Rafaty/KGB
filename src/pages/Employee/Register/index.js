@@ -12,15 +12,17 @@ import api from "../../../services/api";
 import { Link } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 import { Alert } from "react-bootstrap";
-import ImgFillIn from '../../../assets/image/fill-in.svg'
-
+import ImgFillIn from "../../../assets/image/fill-in.svg";
 import EmployeeSchema from "../../../services/Validation/EmployeeValidation";
+import getValidationErrors from "../../../utils/getValidationErrors";
+import * as Yup from "yup";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [cpf, setCpf] = useState("");
   const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [errors, setErrors] = useState([]);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -29,15 +31,24 @@ const Register = () => {
       cpf: cpf,
     };
     try {
-      var isValid = await EmployeeSchema.isValid(data);
+      await EmployeeSchema.validate(data, {
+        abortEarly: false,
+      });
 
       await api.post("funcionario", data);
-
       setShow(true);
       setSuccess(true);
       setCpf("");
       setName("");
-    } catch {
+      
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const errors = getValidationErrors(err);
+        setErrors(errors);
+      } else {
+        setErrors([]);
+      }
+
       setShow(true);
       setSuccess(false);
     }
@@ -72,12 +83,14 @@ const Register = () => {
               dismissible
             >
               <Alert.Heading>
-                {success ? "Cadastro efetuado com sucesso!" : "Ocorreu um erro"}
+                {success ? "Cadastro efetuado com sucesso!" : "Ops! ocorreu um erro :("}
               </Alert.Heading>
+
+              {!success ? errors.map((error) => <p>{error}</p>) : <></>}
             </Alert>
           ) : (
-              <></>
-            )}
+            <></>
+          )}
 
           <Card className="shadow p-3 mb-5 bg-white rounded">
             <Row
@@ -91,13 +104,10 @@ const Register = () => {
                 style={{ textAlign: "center" }}
               >
                 <h1>Cadastro</h1>
-                <h3 className='mb-4'>Gerenciamento de Funcionários</h3>
-                <Image
-                  style={{ width: "220px" }}
-                  src={ImgFillIn}
-                ></Image>
+                <h3 className="mb-4">Gerenciamento de Funcionários</h3>
+                <Image style={{ width: "220px" }} src={ImgFillIn}></Image>
               </Col>
-              <Col md={6} xs={12} >
+              <Col md={6} xs={12}>
                 <Card className="shadow p-3 mb-5 bg-white rounded">
                   <Card.Header>
                     <h4>Novo Funcionário</h4>
@@ -125,7 +135,11 @@ const Register = () => {
                           placeholder="CPF"
                         />
                       </Form.Group>
-                      <Button className="button-animation w-100" variant="dark" type="submit">
+                      <Button
+                        className="button-animation w-100"
+                        variant="dark"
+                        type="submit"
+                      >
                         Cadastrar
                       </Button>
                     </Form>
