@@ -101,5 +101,7 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
     color: white;
     background-color: #009c73;
+    transform: translateX(3px);
+    transition: 0.4s;
   }
 `;

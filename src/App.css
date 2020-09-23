@@ -16,3 +16,13 @@ body {
 button {
   cursor: pointer;
 }
+
+.button-animation:hover{
+    transform: translateX(3px);
+    transition: 0.4s;     
+}
+
+.button-card:hover{
+  transform: scale(1.5,1.5);
+  transition: 0.4s;
+}

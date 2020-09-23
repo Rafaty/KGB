@@ -41,8 +41,8 @@ const CardEmployee = ({ data }) => {
               </Card.Body>
             </Col>
             <Col className="d-flex align-items-end mb-4" md={2}>
-              <Link to={`funcionarios-editar/${data.id}`}><FiEdit className="mr-2" size={20} color={"#2C7CF2"} /></Link>
-              <FiTrash2 style={{cursor: "pointer"}}onClick={handleDelete} size={20} color={"#FF0202"} />
+              <Link to={`funcionarios-editar/${data.id}`}><FiEdit className="button-card mr-2" size={20} color={"#2C7CF2"} /></Link>
+              <FiTrash2 className='button-card' style={{cursor: "pointer"}}onClick={handleDelete} size={20} color={"#FF0202"} />
             </Col>
           </Row>
         </Container>
