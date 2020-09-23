@@ -13,6 +13,7 @@ import api from "../../../services/api";
 import { useHistory, useRouteMatch, Link } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 import EmployeeSchema from "../../../services/Validation/EmployeeValidation";
+import ImgWomen from '../../../assets/image/women-edit.svg';
 
 const Edit = () => {
   const [name, setName] = useState("");
@@ -70,7 +71,7 @@ const Edit = () => {
           <Link to="/funcionarios">
             <FiLogOut
               style={{ color: "#212529" }}
-              className="mr-5 mt-5 mb-3"
+              className="button-animation mr-5 mt-5 mb-3"
               size={35}
             />
           </Link>
@@ -89,17 +90,22 @@ const Edit = () => {
         ) : (
           <></>
         )}
-        <Row>
-          <Col md={6} xs={12} style={{ textAlign: "center" }}>
+        <Card className="shadow p-3 bg-white rounded">
+        <Row className="d-flex mt-5 pr-md-5 align-items-between rounded">
+          <Col className='mt-3 ' md={6} xs={12} style={{ textAlign: "center"}}>
             <h1>Editando</h1>
-            <h3>Gerenciamento de Funcionários</h3>
+            <h3 className="mb-4">Alteração de Dados do Funcionário</h3>
+            <Image 
+            style={{ width: "220px" }}
+            src={ImgWomen}
+          ></Image>
           </Col>
           <Col md={6} xs={12}>
-            <Card>
+            <Card className="shadow mb-5 p-3 bg-white rounded">
               <Card.Header>
-                <h4>Dados do Funcionario</h4>
+                <h4>Dados do Funcionário</h4>
               </Card.Header>
-              <Card.Body>
+              <Card.Body className="shadow mb-5 p-3 bg-white rounded">
                 <Form onSubmit={handleEdit}>
                   <Form.Group>
                     <Form.Control
@@ -123,7 +129,7 @@ const Edit = () => {
                     />
                   </Form.Group>
 
-                  <Button className="w-100" variant="primary" type="submit">
+                  <Button className="button-animation w-100" variant="dark" type="submit">
                     Salvar Alterações
                   </Button>
                 </Form>
@@ -131,6 +137,7 @@ const Edit = () => {
             </Card>
           </Col>
         </Row>
+        </Card>
       </Container>
     </div>
   );

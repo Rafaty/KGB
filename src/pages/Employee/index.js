@@ -39,10 +39,10 @@ const Employees = () => {
           <Image style={{ width: "130px" }} className='' src="images/logo-verde-1.jpg"></Image>
           <Row className="mr-3">
             <Link to='funcionarios-cadastrar'>
-              <Button className="mt-5 mr-3 btn-sm btn-dark"> Cadastro <FiUserPlus className="" size={20} />
+              <Button className="button-animation mt-5 mr-3 btn-sm btn-dark"> Cadastro <FiUserPlus className="" size={20} />
               </Button>
             </Link>
-            <Link to='/'><FiLogOut style={{ color: "#212529"}} className="mt-5" size={30} /></Link>
+            <Link to='/'><FiLogOut style={{ color: "#212529"}} className="button-animation mt-5" size={30} /></Link>
           </Row>
         </Row>
 

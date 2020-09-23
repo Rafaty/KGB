@@ -12,6 +12,7 @@ import api from "../../../services/api";
 import { Link } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 import { Alert } from "react-bootstrap";
+import ImgFillIn from '../../../assets/image/fill-in.svg'
 
 import EmployeeSchema from "../../../services/Validation/EmployeeValidation";
 
@@ -58,7 +59,7 @@ const Register = () => {
             <Link to="/funcionarios">
               <FiLogOut
                 style={{ color: "#212529" }}
-                className="mr-5 mt-5 mb-3"
+                className="button-animation mr-5 mt-5 mb-3"
                 size={35}
               />
             </Link>
@@ -75,13 +76,13 @@ const Register = () => {
               </Alert.Heading>
             </Alert>
           ) : (
-            <></>
-          )}
+              <></>
+            )}
 
-          <Card>
+          <Card className="shadow p-3 mb-5 bg-white rounded">
             <Row
               noGutters={true}
-              className="d-flex justify-content-between mt-5 mb-5 mr-5 rounded"
+              className="d-flex mt-5 pr-md-5 align-items-between rounded"
             >
               <Col
                 className="mt-5"
@@ -90,12 +91,16 @@ const Register = () => {
                 style={{ textAlign: "center" }}
               >
                 <h1>Cadastro</h1>
-                <h3>Gerenciamento de Funcionários</h3>
+                <h3 className='mb-4'>Gerenciamento de Funcionários</h3>
+                <Image
+                  style={{ width: "220px" }}
+                  src={ImgFillIn}
+                ></Image>
               </Col>
-              <Col md={6} xs={12}>
+              <Col md={6} xs={12} >
                 <Card className="shadow p-3 mb-5 bg-white rounded">
                   <Card.Header>
-                    <h4>Novo Funcionario</h4>
+                    <h4>Novo Funcionário</h4>
                   </Card.Header>
                   <Card.Body className="shadow p-3 mb-5 bg-white rounded">
                     <Form onSubmit={handleRegister}>
@@ -120,7 +125,7 @@ const Register = () => {
                           placeholder="CPF"
                         />
                       </Form.Group>
-                      <Button className="w-100" variant="dark" type="submit">
+                      <Button className="button-animation w-100" variant="dark" type="submit">
                         Cadastrar
                       </Button>
                     </Form>
