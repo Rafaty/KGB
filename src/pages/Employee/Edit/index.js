@@ -1,19 +1,28 @@
-import React, { useState } from 'react';
-import { Button, Container, Col, Card, Form, Row, Image} from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Button, Container, Col, Card, Form, Row, Image } from 'react-bootstrap';
 import api from '../../../services/api';
-import { useHistory, Link} from 'react-router-dom';
+import { useHistory, useRouteMatch, Link } from 'react-router-dom';
 import { FiLogOut} from "react-icons/fi";
 
-
-
-const Register = () => {
+const Edit = () => {
 
     const [name, setName] = useState('');
-    const [cpf, setCpf] = useState('');
+    const [cpf, setCpf] = useState('');    
     const history = useHistory();
+    const {params} = useRouteMatch();
 
+    useEffect(() => {
+        const fetchData = async () =>{
+           const response = await api.get(`funcionario/${params.id}`)
+           setName(response.data.nome)
+           setCpf(response.data.cpf)
+           console.log(response.data);
+        }
+        fetchData();
+      
+    }, [])
 
-    const handleRegister = async (e) => {
+    const handleEdit= async (e) => {
 
         e.preventDefault();
         const data = {
@@ -21,9 +30,10 @@ const Register = () => {
             cpf: cpf
         }
         try {
-            await api.post('funcionario', data);
+            await api.put(`funcionario/${params.id}`, data);
             alert('SUCESSO')
-            history.push('/funcionarios')
+            history.push('/funcionarios');
+            
         } catch {
             alert('ERRO')
         }
@@ -31,29 +41,28 @@ const Register = () => {
     }
 
     return (
-        <>
-        <div className="page" >
+        <div className='page' >
 
             <Container>
 
-                <Row noGutters={true} className="d-flex justify-content-between mb-4 rounded" style={{backgroundColor:"#DCDCDC"}} >
-                    <Image style={{width:"150px"}} src="images/logo-verde.png"></Image>
+                <Row noGutters={true} className="d-flex justify-content-between mb-4 rounded" style={{backgroundColor:"#DCDCDC"}}>
+                    <Image style={{width:"150px"}} src="https://i.ibb.co/VgVg7ST/logo-verde.png"></Image>
                     <Link to='/'><FiLogOut style={{ color: "#212529" }} className="mr-5 mt-5 mb-3" size={35} /></Link>                    
                 </Row>
 
-                <Card>
-                <Row noGutters={true} className="d-flex justify-content-between mt-5 mb-5 mr-5 rounded">
-                    <Col className="mt-5" md={6} xs={12} style={{textAlign:"center"}}>
-                        <h1 >Cadastro</h1>
+                <Row>
+                    <Col md={6} xs={12} style={{textAlign:"center"}}>
+                        <h1>Editando</h1>
                         <h3>Gerenciamento de Funcionários</h3>
+
                     </Col>
                     <Col md={6} xs={12}>
-                        <Card className="shadow p-3 mb-5 bg-white rounded">
+                        <Card>
                             <Card.Header>
-                                <h4>Novo Funcionario</h4>
+                                <h4>Dados do Funcionario</h4>
                             </Card.Header>
-                            <Card.Body className="shadow p-3 mb-5 bg-white rounded">
-                                <Form onSubmit={handleRegister}>
+                            <Card.Body>
+                                <Form onSubmit={handleEdit}>
                                     <Form.Group>
                                         <Form.Control type="text" value={name}
                                             onChange={(e) => { setName(e.target.value) }}
@@ -66,16 +75,18 @@ const Register = () => {
                                             onChange={(e) => { setCpf(e.target.value) }}
                                             placeholder="CPF" />
                                     </Form.Group>
-                                    <Button className='w-100' variant="dark" type="submit">Cadastrar</Button>
+
+                                    <Button className='w-100' variant="primary" type="submit">
+                                        Salvar Alterações
+                            </Button>
                                 </Form>
                             </Card.Body>
                         </Card>
                     </Col>
                 </Row>
-                </Card>
             </Container>
         </div>
-    </>
+
     )
 }
-export default Register;
+export default Edit;
