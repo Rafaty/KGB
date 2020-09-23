@@ -16,9 +16,7 @@ import {
 
 const Home = () => {
   return (
-    
-    <Container>      
-      <Image style={{width:"180px" , marginBottom: "35%"}}className=''src="images/logo-verde.png"></Image>      
+    <Container>
       <ContainerCentral>
         <ContainerImage>
           <Image src="/images/hire.svg"></Image>
