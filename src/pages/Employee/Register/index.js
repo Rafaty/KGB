@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 import { Alert } from "react-bootstrap";
 import ImgFillIn from "../../../assets/image/fill-in.svg";
-import EmployeeSchema from "../../../services/Validation/EmployeeValidation";
+import EmployeeSchema from "../../../Validations/EmployeeValidation";
 import getValidationErrors from "../../../utils/getValidationErrors";
 import * as Yup from "yup";
 

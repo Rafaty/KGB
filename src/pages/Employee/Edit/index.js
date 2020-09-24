@@ -12,10 +12,10 @@ import {
 import api from "../../../services/api";
 import { useHistory, useRouteMatch, Link } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
-import EmployeeSchema from "../../../services/Validation/EmployeeValidation";
+import EmployeeSchema from "../../../Validations/EmployeeValidation";
 import ImgWomen from "../../../assets/image/women-edit.svg";
 import * as Yup from "yup";
-import getValidationErrors from "../../../utils/getValidationErrors"; 
+import getValidationErrors from "../../../utils/getValidationErrors";
 
 const Edit = () => {
   const [name, setName] = useState("");
@@ -31,10 +31,9 @@ const Edit = () => {
       const response = await api.get(`funcionario/${params.id}`);
       setName(response.data.nome);
       setCpf(response.data.cpf);
-      console.log(response.data);
     };
     fetchData();
-  }, []);
+  }, [params.id]);
 
   const handleEdit = async (e) => {
     e.preventDefault();
@@ -55,6 +54,7 @@ const Edit = () => {
       setTimeout(function () {
         history.push("/funcionarios");
       }, 1500);
+
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
@@ -95,7 +95,9 @@ const Edit = () => {
             dismissible
           >
             <Alert.Heading>
-              {success ? "Funcionário editado com sucesso!" : "Ops! ocorreu um erro :("}
+              {success
+                ? "Funcionário editado com sucesso!"
+                : "Ops! ocorreu um erro :("}
             </Alert.Heading>
             {!success ? errors.map((error) => <p>{error}</p>) : <></>}
           </Alert>

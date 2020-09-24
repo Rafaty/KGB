@@ -2,19 +2,16 @@ import React from "react";
 import api from "../../services/api";
 import { Card, Container, Col, Row, Image } from "react-bootstrap";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
-import {Link, useHistory} from 'react-router-dom';
-
+import { Link, useHistory } from "react-router-dom";
 
 const CardEmployee = ({ data }) => {
-    
   const history = useHistory();
 
   const handleDelete = async () => {
     try {
       await api.delete(`funcionario/${data.id}`);
-      history.push('/');
-      history.push('/funcionarios');
-
+      history.push("/");
+      history.push("/funcionarios");
     } catch (error) {
       alert("Ocorreu um erro! :( ");
     }
@@ -41,8 +38,20 @@ const CardEmployee = ({ data }) => {
               </Card.Body>
             </Col>
             <Col className="d-flex align-items-end mb-4" md={2}>
-              <Link to={`funcionarios-editar/${data.id}`}><FiEdit className="button-card mr-2" size={20} color={"#2C7CF2"} /></Link>
-              <FiTrash2 className='button-card' style={{cursor: "pointer"}}onClick={handleDelete} size={20} color={"#FF0202"} />
+              <Link to={`funcionarios-editar/${data.id}`}>
+                <FiEdit
+                  className="button-card mr-2"
+                  size={20}
+                  color={"#2C7CF2"}
+                />
+              </Link>
+              <FiTrash2
+                className="button-card"
+                style={{ cursor: "pointer" }}
+                onClick={handleDelete}
+                size={20}
+                color={"#FF0202"}
+              />
             </Col>
           </Row>
         </Container>
